@@ -3,11 +3,11 @@ package com.sampletester.request;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.sampletester.request.base.RestApiRequestBase;
+import com.sampletester.request.base.RestApiRequestTestBase;
 
-public class InfoRestApiRequest extends RestApiRequestBase {
+public class InfoRestApiRequest extends RestApiRequestTestBase {
 
-	private static final String url = "http://localhost:8080";
+	private static final String url = "http://localhost:8080/info";
 
 	public InfoRestApiRequest(String apiToken, Long id) {
 		super(url);
