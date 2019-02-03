@@ -30,9 +30,8 @@ public class SampleRequestTest {
 		request.setExpectedHttpStatusCode(expectedHttpStatusCode);
 
 		boolean result = request.run();
-		assertTrue(result);
-
 		logger.info("testGet() END");
+		assertTrue(result);
 	}
 
 	@Test
@@ -52,15 +51,14 @@ public class SampleRequestTest {
 		error.put("message", "エラー");
 		expectedErrors.add(error);
 
-		// RestApiPostRequest request = new RestApiPostRequest(url, params,
-		// expectedStatusCode, expectedErrors);
 		RestApiPostRequest request = new RestApiPostRequest(url);
 		request.setParams(params);
 		request.setExpectedHttpStatusCode(expectedHttpStatusCode);
 		request.setExpectedErrors(expectedErrors);
 		boolean result = request.run();
-		assertTrue(result);
+
 		logger.info("testPost() END");
+		assertTrue(result);
 	}
 
 	@Test
@@ -70,17 +68,25 @@ public class SampleRequestTest {
 		Map<String, String> params = new HashMap<>();
 		params.put("token", "TOKEN");
 		String expectedHttpStatusCode = "200";
+		Map<String, String> expectedContents = new HashMap<>();
+		expectedContents.put("subject", "こんにちは");
 
 		InfoRestApiRequest request1 = new InfoRestApiRequest("TOKEN", 3L);
 		request1.setExpectedHttpStatusCode(expectedHttpStatusCode);
+		request1.setExpectedContents(expectedContents);
+
+		Map<String, String> expectedContents2 = new HashMap<>();
+		expectedContents2.put("subject", "こんにちは２");
+		expectedContents2.put("text", "");
 
 		InfoRestApiRequest request2 = new InfoRestApiRequest("TOKEN", 4L);
 		request2.setExpectedHttpStatusCode(expectedHttpStatusCode);
+		request2.setExpectedContents(expectedContents2);
 
 		request1.setNextRequest(request2);
 		boolean result = request1.run();
-		assertTrue(result);
 
 		logger.info("testChain() END");
+		assertTrue(result);
 	}
 }

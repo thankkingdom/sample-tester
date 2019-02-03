@@ -3,9 +3,9 @@ package com.sampletester.request;
 import java.util.List;
 import java.util.Map;
 
-import com.sampletester.request.base.RestApiRequestBase;
+import com.sampletester.request.base.RestApiRequestTestBase;
 
-public class RestApiPostRequest extends RestApiRequestBase {
+public class RestApiPostRequest extends RestApiRequestTestBase {
 
 	public RestApiPostRequest(String url) {
 		super(url);
